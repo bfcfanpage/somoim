@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+	<title xml:lang="ko">somoim</title>
+	<description xml:lang="ko">소모임을 생성하는 모듈</description>
+	<version>1.0.0</version>
+	<date>2026-01-09</date>
+	<category>service</category>
+	<author email_address="bfcfanpage@gmail.com" link="https://bucheonfc.net">
+		<name xml:lang="ko">redsgo</name>
+	</author>
+</module>
