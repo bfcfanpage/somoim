@@ -1,44 +1,56 @@
 <?php
-
-/**
- * somoim
- *
- * Copyright (c) redsgo
- *
- * Generated with https://www.poesis.dev/tools/modulegen
- */
-class SomoimAdminController extends Somoim
+class somoimAdminController extends somoim
 {
-	/**
-	 * 관리자 설정 저장 액션 예제
-	 */
-	public function procSomoimAdminInsertConfig()
-	{
-		// 현재 설정 상태 불러오기
-		$config = $this->getConfig();
-
-		// 제출받은 데이터 불러오기
-		$vars = Context::getRequestVars();
-
-		// 제출받은 데이터를 각각 적절히 필터링하여 설정 변경
-		if (in_array($vars->example_config, ['Y', 'N']))
-		{
-			$config->example_config = $vars->example_config;
-		}
-		else
-		{
-			return $this->createObject(-1, '설정값이 이상함');
-		}
-
-		// 변경된 설정을 저장
-		$output = $this->setConfig($config);
-		if (!$output->toBool())
-		{
-			return $output;
-		}
-
-		// 설정 화면으로 리다이렉트
-		$this->setMessage('success_registed');
-		$this->setRedirectUrl(Context::get('success_return_url'));
-	}
+    /**
+     * 초기화
+     */
+    function init()
+    {
+    }
+    
+    /**
+     * 소모임 모듈 생성
+     */
+    function procSomoimAdminInsertModule()
+    {
+        $oModuleController = getController('module');
+        $oModuleModel = getModel('module');
+        
+        // 기본 설정값
+        $args = new stdClass();
+        $args->module = 'somoim';
+        $args->mid = Context::get('mid');
+        $args->browser_title = Context::get('browser_title');
+        $args->skin = Context::get('skin') ?: 'default';
+        $args->site_srl = Context::get('site_srl') ?: 0;
+        
+        // mid 중복 체크
+        if(!$args->mid)
+        {
+            return new BaseObject(-1, 'msg_module_name_exists');
+        }
+        
+        $module_info = $oModuleModel->getModuleInfoByMid($args->mid);
+        if($module_info->mid)
+        {
+            return new BaseObject(-1, 'msg_module_name_exists');
+        }
+        
+        // 모듈 생성
+        $output = $oModuleController->insertModule($args);
+        if(!$output->toBool())
+        {
+            return $output;
+        }
+        
+        $this->setMessage('success_registed');
+        
+        if(!in_array(Context::getRequestMethod(), array('XMLRPC', 'JSON')))
+        {
+            $returnUrl = Context::get('success_return_url') ?: getNotEncodedUrl('', 'module', 'admin', 'act', 'dispSomoimAdminList');
+            $this->setRedirectUrl($returnUrl);
+        }
+        
+        return $output;
+    }
 }

@@ -1,35 +1,38 @@
 <?php
-
-/**
- * somoim
- *
- * Copyright (c) redsgo
- *
- * Generated with https://www.poesis.dev/tools/modulegen
- */
-class SomoimAdminView extends Somoim
+class somoimAdminView extends somoim
 {
-	/**
-	 * 초기화
-	 */
-	public function init()
-	{
-		// 관리자 화면 템플릿 경로 지정
-		$this->setTemplatePath($this->module_path . 'tpl');
-	}
-
-	/**
-	 * 관리자 설정 화면 예제
-	 */
-	public function dispSomoimAdminConfig()
-	{
-		// 현재 설정 상태 불러오기
-		$config = $this->getConfig();
-
-		// Context에 세팅
-		Context::set('somoim_config', $config);
-
-		// 스킨 파일 지정
-		$this->setTemplateFile('config');
-	}
+    /**
+     * 초기화
+     */
+    function init()
+    {
+        $this->setTemplatePath($this->module_path.'tpl');
+        $this->setTemplateFile('index');
+    }
+    
+    /**
+     * 소모임 모듈 목록
+     */
+    function dispSomoimAdminList()
+    {
+        $oSomoimAdminModel = getAdminModel('somoim');
+        $module_list = $oSomoimAdminModel->getSomoimModuleList();
+        
+        Context::set('module_list', $module_list);
+        
+        $this->setTemplateFile('somoim_list');
+    }
+    
+    /**
+     * 소모임 모듈 생성 화면
+     */
+    function dispSomoimAdminInsert()
+    {
+        // 스킨 목록
+        $oModuleModel = getModel('module');
+        $skin_list = $oModuleModel->getSkins($this->module_path);
+        Context::set('skin_list', $skin_list);
+        
+        $this->setTemplateFile('somoim_insert');
+    }
 }

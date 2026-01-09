@@ -315,4 +315,18 @@ class Somoim extends ModuleObject
 	{
 
 	}
+	/**
+	 * 메뉴 타입 목록 반환 (메뉴에 표시되게 하기 위함)
+	 *
+	 * @return array
+	 */
+	public function getModuleTypes()
+	{
+		$types = array();
+		$types['dispSomoimList'] = new stdClass();
+		$types['dispSomoimList']->title = '소모임 목록';
+		$types['dispSomoimList']->description = '소모임 전체 목록을 표시합니다';
+		
+		return $types;
+	}
 }
