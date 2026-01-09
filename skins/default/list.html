@@ -1,0 +1,54 @@
+<load target="./css/somoim.css" />
+
+<div class="somoim">
+    <div class="somoim-header">
+        <h1>소모임</h1>
+        <a href="{getUrl('act','dispSomoimCreate')}" class="btn btn-primary">소모임 만들기</a>
+    </div>
+    
+    <div class="somoim-list">
+        <!--@if($somoim_list && count($somoim_list) > 0)-->
+            <!--@foreach($somoim_list as $somoim)-->
+            <div class="somoim-item">
+                <div class="somoim-emblem">
+                    <!--@if($somoim->emblem)-->
+                        <img src="{$somoim->emblem}" alt="{$somoim->title}" />
+                    <!--@else-->
+                        <div class="no-emblem">
+                            <i class="xi xi-users"></i>
+                        </div>
+                    <!--@end-->
+                </div>
+                
+                <div class="somoim-info">
+                    <h3>
+                        <a href="{getUrl('act','dispSomoimView','somoim_srl',$somoim->somoim_srl)}">
+                            {$somoim->title}
+                        </a>
+                    </h3>
+                    <p class="description">{$somoim->description}</p>
+                    <div class="meta">
+                        <span class="members">
+                            <i class="xi xi-user"></i> {$somoim->member_count}명
+                        </span>
+                        <span class="date">
+                            <i class="xi xi-calendar"></i> {zdate($somoim->regdate, 'Y-m-d')}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--@end-->
+        <!--@else-->
+            <div class="no-data">
+                <p>등록된 소모임이 없습니다.</p>
+                <a href="{getUrl('act','dispSomoimCreate')}" class="btn btn-primary">첫 소모임 만들기</a>
+            </div>
+        <!--@end-->
+    </div>
+    
+    <!--@if($page_navigation)-->
+    <div class="pagination">
+        {$page_navigation}
+    </div>
+    <!--@end-->
+</div>

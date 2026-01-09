@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<module>
-	<grants>
-	</grants>
-	<actions>
-		<!-- 관리자 액션 -->
-		<action name="dispSomoimAdminConfig" type="view" menu_name="somoim" admin_index="true" />
-		<action name="procSomoimAdminInsertConfig" type="controller" />
-		<!-- 일반 액션 -->
-		<action name="dispSomoimIndex" type="view" index="true" />
-	</actions>
-	<menus>
-		<menu name="somoim" type="all">
-			<title xml:lang="ko">somoim</title>
-		</menu>
-	</menus>
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+    <grants />
+    <permissions />
+    <actions>
+        <action name="dispSomoimList" type="view" standalone="true" index="true" />
+        <action name="dispSomoimView" type="view" standalone="true" />
+        <action name="dispSomoimCreate" type="view" standalone="true" />
+        <action name="dispSomoimManageRequests" type="view" standalone="true" />
+        <action name="procSomoimCreate" type="controller" standalone="true" />
+        <action name="procSomoimJoinRequest" type="controller" standalone="true" />
+        <action name="procSomoimApproveJoin" type="controller" standalone="true" />
+        <action name="procSomoimRejectJoin" type="controller" standalone="true" />
+    </actions>
 </module>

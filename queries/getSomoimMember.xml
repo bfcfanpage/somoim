@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="getSomoimMember" action="select">
+    <tables>
+        <table name="somoim_member" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="somoim_srl" var="somoim_srl" notnull="notnull" />
+        <condition operation="equal" column="user_srl" var="user_srl" notnull="notnull" />
+        <condition operation="equal" column="status" var="status" default="A" />
+    </conditions>
+</query>

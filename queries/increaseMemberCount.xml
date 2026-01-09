@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="increaseMemberCount" action="update">
+    <tables>
+        <table name="somoim" />
+    </tables>
+    <columns>
+        <column name="member_count" var="member_count" operation="plus" default="1" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="somoim_srl" var="somoim_srl" notnull="notnull" />
+    </conditions>
+</query>

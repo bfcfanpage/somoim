@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="getJoinRequest" action="select">
+    <tables>
+        <table name="somoim_join_request" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="request_srl" var="request_srl" notnull="notnull" />
+    </conditions>
+</query>

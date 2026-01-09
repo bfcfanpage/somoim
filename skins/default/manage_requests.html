@@ -1,0 +1,71 @@
+<load target="./css/somoim.css" />
+
+<div class="somoim">
+    <div class="somoim-header">
+        <h1>{$somoim->title} - 가입 신청 관리</h1>
+        <a href="{getUrl('act','dispSomoimView','somoim_srl',$somoim->somoim_srl)}" class="btn btn-secondary">
+            돌아가기
+        </a>
+    </div>
+    
+    <div class="requests-list">
+        <!--@if($requests && count($requests) > 0)-->
+            <!--@foreach($requests as $request)-->
+            <div class="request-item">
+                <div class="request-info">
+                    <strong>{$request->nick_name}</strong>
+                    <small>{zdate($request->regdate, 'Y-m-d H:i')}</small>
+                    <!--@if($request->message)-->
+                        <p class="request-message">{$request->message}</p>
+                    <!--@end-->
+                </div>
+                
+                <div class="request-actions">
+                    <button type="button" class="btn btn-success btn-sm" 
+                            onclick="approveRequest({$request->request_srl})">
+                        승인
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm" 
+                            onclick="rejectRequest({$request->request_srl})">
+                        거부
+                    </button>
+                </div>
+            </div>
+            <!--@end-->
+        <!--@else-->
+            <div class="no-data">
+                <p>대기 중인 가입 신청이 없습니다.</p>
+            </div>
+        <!--@end-->
+    </div>
+</div>
+
+<script>
+function approveRequest(request_srl) {
+    if(!confirm('가입을 승인하시겠습니까?')) return;
+    
+    var params = {
+        act: 'procSomoimApproveJoin',
+        request_srl: request_srl
+    };
+    
+    exec_xml('somoim', 'procSomoimApproveJoin', params, function(ret) {
+        alert(ret.message);
+        location.reload();
+    });
+}
+
+function rejectRequest(request_srl) {
+    if(!confirm('가입을 거부하시겠습니까?')) return;
+    
+    var params = {
+        act: 'procSomoimRejectJoin',
+        request_srl: request_srl
+    };
+    
+    exec_xml('somoim', 'procSomoimRejectJoin', params, function(ret) {
+        alert(ret.message);
+        location.reload();
+    });
+}
+</script>

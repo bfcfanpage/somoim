@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="getSomoimMembers" action="select">
+    <tables>
+        <table name="somoim_member" alias="sm" />
+        <table name="member" alias="m" type="left join">
+            <conditions>
+                <condition operation="equal" column="sm.user_srl" default="m.member_srl" />
+            </conditions>
+        </table>
+    </tables>
+    <columns>
+        <column name="sm.*" />
+        <column name="m.user_id" />
+        <column name="m.user_name" />
+        <column name="m.nick_name" />
+        <column name="m.email_address" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="sm.somoim_srl" var="somoim_srl" notnull="notnull" />
+        <condition operation="equal" column="sm.status" var="status" default="A" />
+    </conditions>
+    <order>
+        <column name="sm.regdate" order="asc" />
+    </order>
+</query>

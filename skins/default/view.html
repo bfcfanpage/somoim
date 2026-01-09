@@ -1,0 +1,92 @@
+<load target="./css/somoim.css" />
+
+<div class="somoim">
+    <div class="somoim-detail">
+        <div class="somoim-header-detail">
+            <div class="emblem-large">
+                <!--@if($somoim->emblem)-->
+                    <img src="{$somoim->emblem}" alt="{$somoim->title}" />
+                <!--@else-->
+                    <div class="no-emblem-large">
+                        <i class="xi xi-users"></i>
+                    </div>
+                <!--@end-->
+            </div>
+            
+            <div class="somoim-info-detail">
+                <h1>{$somoim->title}</h1>
+                <p class="description">{$somoim->description}</p>
+                <div class="meta">
+                    <span><i class="xi xi-user"></i> {$somoim->member_count}명</span>
+                    <span><i class="xi xi-calendar"></i> {zdate($somoim->regdate, 'Y-m-d')}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="somoim-actions">
+            <!--@if($is_leader)-->
+                <a href="{getUrl('act','dispSomoimManageRequests','somoim_srl',$somoim->somoim_srl)}" class="btn btn-primary">
+                    가입 신청 관리
+                </a>
+            <!--@end-->
+            
+            <!--@if(!$is_member && $logged_info)-->
+                <button type="button" class="btn btn-success" onclick="joinSomoim()">
+                    가입 신청
+                </button>
+            <!--@end-->
+            
+            <!--@if($is_member)-->
+                <span class="badge badge-success">가입됨</span>
+            <!--@end-->
+            
+            <!--@if($somoim->board_srl)-->
+                <a href="{getUrl('','mid','somoim_'.$somoim->somoim_srl)}" class="btn btn-secondary">
+                    게시판 가기
+                </a>
+            <!--@end-->
+        </div>
+        
+        <div class="somoim-members">
+            <h2>회원 목록 ({count($members)}명)</h2>
+            <div class="members-list">
+                <!--@if($members && count($members) > 0)-->
+                    <!--@foreach($members as $member)-->
+                    <div class="member-item">
+                        <div class="member-avatar">
+                            <i class="xi xi-user-o"></i>
+                        </div>
+                        <div class="member-info">
+                            <strong>{$member->nick_name}</strong>
+                            <!--@if($member->role == 'leader')-->
+                                <span class="badge badge-primary">소모임장</span>
+                            <!--@end-->
+                            <small>{zdate($member->regdate, 'Y-m-d')}</small>
+                        </div>
+                    </div>
+                    <!--@end-->
+                <!--@else-->
+                    <p>회원이 없습니다.</p>
+                <!--@end-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function joinSomoim() {
+    var message = prompt('가입 신청 메시지를 입력해주세요 (선택사항):');
+    if(message === null) return; // 취소
+    
+    var params = {
+        act: 'procSomoimJoinRequest',
+        somoim_srl: '{$somoim->somoim_srl}',
+        message: message
+    };
+    
+    exec_xml('somoim', 'procSomoimJoinRequest', params, function(ret) {
+        alert(ret.message);
+        location.reload();
+    });
+}
+</script>

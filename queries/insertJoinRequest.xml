@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="insertJoinRequest" action="insert">
+    <tables>
+        <table name="somoim_join_request" />
+    </tables>
+    <columns>
+        <column name="request_srl" var="request_srl" notnull="notnull" />
+        <column name="somoim_srl" var="somoim_srl" notnull="notnull" />
+        <column name="user_srl" var="user_srl" notnull="notnull" />
+        <column name="message" var="message" />
+        <column name="status" var="status" default="pending" />
+        <column name="regdate" var="regdate" default="curdate()" />
+    </columns>
+</query>

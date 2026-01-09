@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="getSomoim" action="select">
+    <tables>
+        <table name="somoim" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="somoim_srl" var="somoim_srl" notnull="notnull" />
+    </conditions>
+</query>

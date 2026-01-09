@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="getJoinRequests" action="select">
+    <tables>
+        <table name="somoim_join_request" alias="sjr" />
+        <table name="member" alias="m" type="left join">
+            <conditions>
+                <condition operation="equal" column="sjr.user_srl" default="m.member_srl" />
+            </conditions>
+        </table>
+    </tables>
+    <columns>
+        <column name="sjr.*" />
+        <column name="m.user_id" />
+        <column name="m.user_name" />
+        <column name="m.nick_name" />
+        <column name="m.email_address" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="sjr.somoim_srl" var="somoim_srl" notnull="notnull" />
+        <condition operation="equal" column="sjr.status" var="status" />
+    </conditions>
+    <order>
+        <column name="sjr.regdate" order="desc" />
+    </order>
+</query>

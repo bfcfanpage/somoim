@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="updateSomoim" action="update">
+    <tables>
+        <table name="somoim" />
+    </tables>
+    <columns>
+        <column name="title" var="title" />
+        <column name="description" var="description" />
+        <column name="emblem" var="emblem" />
+        <column name="board_srl" var="board_srl" />
+        <column name="require_approval" var="require_approval" />
+        <column name="last_update" var="last_update" default="curdate()" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="somoim_srl" var="somoim_srl" notnull="notnull" />
+    </conditions>
+</query>

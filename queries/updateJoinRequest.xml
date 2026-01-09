@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="updateJoinRequest" action="update">
+    <tables>
+        <table name="somoim_join_request" />
+    </tables>
+    <columns>
+        <column name="status" var="status" />
+        <column name="process_date" var="process_date" default="curdate()" />
+        <column name="processed_by" var="processed_by" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="request_srl" var="request_srl" notnull="notnull" />
+    </conditions>
+</query>

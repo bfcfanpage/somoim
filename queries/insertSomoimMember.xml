@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="insertSomoimMember" action="insert">
+    <tables>
+        <table name="somoim_member" />
+    </tables>
+    <columns>
+        <column name="member_srl" var="member_srl" notnull="notnull" />
+        <column name="somoim_srl" var="somoim_srl" notnull="notnull" />
+        <column name="user_srl" var="user_srl" notnull="notnull" />
+        <column name="role" var="role" default="member" />
+        <column name="regdate" var="regdate" default="curdate()" />
+        <column name="status" var="status" default="A" />
+    </columns>
+</query>

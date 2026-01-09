@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table name="somoim">
+    <column name="somoim_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+    <column name="title" type="varchar" size="250" notnull="notnull" />
+    <column name="description" type="text" />
+    <column name="emblem" type="varchar" size="250" />
+    <column name="leader_srl" type="number" size="11" notnull="notnull" />
+    <column name="member_count" type="number" size="11" default="1" />
+    <column name="board_srl" type="number" size="11" />
+    <column name="require_approval" type="char" size="1" default="Y" />
+    <column name="regdate" type="date" />
+    <column name="last_update" type="date" />
+    <column name="status" type="char" size="1" default="A" />
+</table>

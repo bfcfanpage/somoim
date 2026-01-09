@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="insertSomoim" action="insert">
+    <tables>
+        <table name="somoim" />
+    </tables>
+    <columns>
+        <column name="somoim_srl" var="somoim_srl" notnull="notnull" />
+        <column name="title" var="title" notnull="notnull" />
+        <column name="description" var="description" />
+        <column name="emblem" var="emblem" />
+        <column name="leader_srl" var="leader_srl" notnull="notnull" />
+        <column name="member_count" var="member_count" default="1" />
+        <column name="board_srl" var="board_srl" />
+        <column name="require_approval" var="require_approval" default="Y" />
+        <column name="regdate" var="regdate" default="curdate()" />
+        <column name="last_update" var="last_update" default="curdate()" />
+        <column name="status" var="status" default="A" />
+    </columns>
+</query>
