@@ -8,8 +8,4 @@
     <column name="regdate" type="date" />
     <column name="process_date" type="date" />
     <column name="processed_by" type="number" size="11" />
-    <index name="idx_somoim_request">
-        <column name="somoim_srl" />
-        <column name="status" />
-    </index>
 </table>
