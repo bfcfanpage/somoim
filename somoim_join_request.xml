@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table name="somoim_join_request">
+    <column name="request_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+    <column name="somoim_srl" type="number" size="11" notnull="notnull" />
+    <column name="user_srl" type="number" size="11" notnull="notnull" />
+    <column name="message" type="text" />
+    <column name="status" type="varchar" size="20" default="pending" />
+    <column name="regdate" type="date" />
+    <column name="process_date" type="date" />
+    <column name="processed_by" type="number" size="11" />
+    <index name="idx_somoim_request">
+        <column name="somoim_srl" />
+    </index>
+    <index name="idx_request_status">
+        <column name="status" />
+    </index>
+</table>
