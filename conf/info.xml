@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="0.2">
-	<title xml:lang="ko">somoim</title>
-	<description xml:lang="ko">소모임을 생성하는 모듈</description>
-	<version>1.0.0</version>
-	<date>2026-01-09</date>
-	<category>service</category>
-	<author email_address="bfcfanpage@gmail.com" link="https://bucheonfc.net">
-		<name xml:lang="ko">redsgo</name>
-	</author>
+    <admin>
+        <category name="somoim">
+            <title xml:lang="ko">소모임</title>
+            <title xml:lang="en">Group</title>
+        </category>
+        <menu name="dispSomoimAdminList" category="somoim">
+            <title xml:lang="ko">소모임 목록</title>
+            <title xml:lang="en">Group List</title>
+        </menu>
+        <menu name="dispSomoimAdminInsert" category="somoim">
+            <title xml:lang="ko">소모임 생성</title>
+            <title xml:lang="en">Create Group</title>
+        </menu>
+    </admin>
 </module>

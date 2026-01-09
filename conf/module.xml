@@ -12,4 +12,10 @@
         <action name="procSomoimApproveJoin" type="controller" standalone="true" />
         <action name="procSomoimRejectJoin" type="controller" standalone="true" />
     </actions>
+    <menus>
+        <menu name="dispSomoimList" type="all">
+            <title xml:lang="ko">소모임</title>
+            <title xml:lang="en">Group</title>
+        </menu>
+    </menus>
 </module>
